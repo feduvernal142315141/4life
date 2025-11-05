@@ -1,8 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { ScrollToTop, ScrollToTopButton } from "@/components/scroll-to-top"
+import { ClientWrapper } from "@/components/ClientWrapper"
 import "./globals.css"
 
 const inter = Inter({
@@ -35,11 +34,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
-        <ScrollToTop />
-        {children}
-        <ScrollToTopButton />
-        <Analytics />
+      <body
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-white text-foreground`}
+      >
+        {/* 👇 Todo lo que use hooks se mueve dentro del ClientWrapper */}
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   )
